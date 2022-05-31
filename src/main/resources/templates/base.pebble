@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.1/datatables.min.css" />
+<title>Pebble Spring Example</title>
+</head>
+<body>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+	<div id="wrap">
+		<div class="container">{% block content %} {# This section is to
+			be overriden by child templates #} {% endblock content %}</div>
+		<!-- end container -->
+	</div>
+	<!-- end wrap -->
+</body>
+</html>

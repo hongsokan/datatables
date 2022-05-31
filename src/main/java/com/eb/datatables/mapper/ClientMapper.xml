@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eb.datatables.mapper.ClientMapper">
+	<select id="count" resultType="int">
+		select count(*) from COMPLETE_INFO
+	</select>
+	<select id="list" resultType="CompleteInfo">
+		SELECT
+			USER_ID,
+			USER_NAME,
+			BIRTHDAY,
+			PHONE_MOBILE
+		FROM
+			COMPLETE_INFO
+		WHERE ROWNUM <![CDATA[ < ]]>  1000
+	</select>
+</mapper>

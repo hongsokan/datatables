@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eb.datatables.mapper.ServerMapper">
+	<select id="count" resultType="int">
+		select count(*) from COMPLETE_INFO
+	</select>
+	<select id="list" resultType="CompleteInfo" parameterType="int">
+		SELECT
+			*
+		FROM
+			(
+			SELECT
+				ROWNUM AS RNUM,
+				T.USER_ID,
+				T.USER_NAME,
+				T.BIRTHDAY,
+				T.PHONE_MOBILE
+			FROM
+				COMPLETE_INFO T
+			ORDER BY 1,2,3,4
+		    )
+		WHERE
+			RNUM BETWEEN #{from} AND #{to}
+	</select>
+</mapper>

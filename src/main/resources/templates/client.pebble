@@ -1,0 +1,33 @@
+{% extends 'base' %} {% set activeNav = 'home' %} {% block content %}
+<div>
+	<table id="table" class="display" style="width: 100%">
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>User Name</th>
+				<th>Birthday</th>
+				<th>Phone</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+
+<script>
+$(function(){
+	$('#table').DataTable({
+		ajax : //'/client/list',
+
+		{
+			"url" : "/client/list",
+			"dataSrc" : ""
+		},
+		columns : [
+			{ data : 'userId' },
+			{ data : 'userName' },
+			{ data : 'birthday' },
+			{ data : 'phoneMobile' }
+		]
+	});
+});
+</script>
+{% endblock content%}
