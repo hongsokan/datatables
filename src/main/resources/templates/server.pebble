@@ -14,27 +14,41 @@
 
 <script>
 $(function(){
-	$('#table').DataTable({
-		processing : true,
-		serverSide : true,
-		ajax : //'/client/list',
-		{
-			"url" : "/server/list",
-			"dataSrc" : "",
-			"data" : function(d) {
-				d.page = $('#table').DataTable().page.info().page + 1;
-				d.pageSize = $('#table').DataTable().page.len();
-				//d.orderBy = orderColumn[$('#table').DataTable().order()[0][0]];
-				//d.orderCondition = $('#table').DataTable().order()[0][1];
+	var count;
+
+	$.ajax({
+		url: "/server/count",
+	}).done(function(data) {
+		console.log(data);
+		count = data;
+
+
+		$('#table').DataTable({
+			processing : true,
+			serverSide : true,
+			ajax : //'/client/list',
+			{
+				"url" : "/server/list",
+				"dataSrc" : "",
+				"data" : function(d) {
+					d.start = Math.floor(count / 10) * 10;
+					d.page = Math.floor(count / 10);
+					d.pageSize = count;
+					//d.orderBy = orderColumn[$('#table').DataTable().order()[0][0]];
+					//d.orderCondition = $('#table').DataTable().order()[0][1];
+				},
 			},
-		},
-		columns : [
-			{ data : 'userId' },
-			{ data : 'userName' },
-			{ data : 'birthday' },
-			{ data : 'phoneMobile' }
-		]
+			columns : [
+				{ data : 'userId' },
+				{ data : 'userName' },
+				{ data : 'birthday' },
+				{ data : 'phoneMobile' }
+			]
+		});
+
 	});
+
+
 });
 </script>
 {% endblock content%}
