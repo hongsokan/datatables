@@ -23,7 +23,7 @@ public class DataSourceConfig {
 	@Bean
 	public DataSource dataSource() {
 		HikariDataSource dataSource = new HikariDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+		dataSource.setDriverClassName("");
 		dataSource.setJdbcUrl("jdbc:oracle:thin:@192.168.0.100:11521:xe");
 		dataSource.setUsername("ASPUSER");
 		dataSource.setPassword("ASPUSER");
