@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -20,13 +21,19 @@ import com.zaxxer.hikari.HikariDataSource;
 @org.springframework.context.annotation.Configuration
 public class DataSourceConfig {
 
+	private Environment env;
+
+	public DataSourceConfig(Environment env) {
+		this.env = env;
+	}
+
 	@Bean
 	public DataSource dataSource() {
 		HikariDataSource dataSource = new HikariDataSource();
-		dataSource.setDriverClassName("");
-		dataSource.setJdbcUrl("jdbc:oracle:thin:@192.168.0.100:11521:xe");
-		dataSource.setUsername("ASPUSER");
-		dataSource.setPassword("ASPUSER");
+		dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
+		dataSource.setJdbcUrl(env.getProperty("spring.datasource.url"));
+		dataSource.setUsername(env.getProperty("spring.datasource.username"));
+		dataSource.setPassword(env.getProperty("spring.datasource.password"));
 		return dataSource;
 	}
 
