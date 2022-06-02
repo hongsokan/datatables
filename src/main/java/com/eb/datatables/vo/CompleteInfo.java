@@ -7,11 +7,10 @@ import lombok.Data;
 @Data
 public class CompleteInfo implements Serializable {
 	private static final long serialVersionUID = -1101610398069899135L;
-
-	public String userId;
-	public String userName;
-	public String birthday;
-	public String phoneMobile;
+	private String userId;
+	private String userName;
+	private String birthday;
+	private String phoneMobile;
 
 	/*
 	public String systemCode;

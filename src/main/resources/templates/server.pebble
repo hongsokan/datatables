@@ -13,42 +13,60 @@
 </div>
 
 <script>
-$(function(){
-	var count;
-
-	$.ajax({
-		url: "/server/count",
-	}).done(function(data) {
-		console.log(data);
-		count = data;
-
-
-		$('#table').DataTable({
+	$(function() {
+		$("#table").DataTable({
 			processing : true,
 			serverSide : true,
-			ajax : //'/client/list',
-			{
-				"url" : "/server/list",
-				"dataSrc" : "",
-				"data" : function(d) {
-					d.start = Math.floor(count / 10) * 10;
-					d.page = Math.floor(count / 10);
-					d.pageSize = count;
-					//d.orderBy = orderColumn[$('#table').DataTable().order()[0][0]];
-					//d.orderCondition = $('#table').DataTable().order()[0][1];
+			ajax : {
+				url : "/server/list",
+				method : "GET",
+				dataType : "json",
+				data : function(_param) {
+					// alter parameter
+					var param = {};
+					param.draw = _param.draw;
+					param.start = _param.start;
+					param.length = _param.length;
+					console.log(param);
+
+					param.order = _param.order.map(function(_o) {
+						var o = {}
+						o.column = Number(_o.column) + 1;
+						o.dir = _o.dir;
+						return o;
+					});
+					if (!param.order.length) {
+						param.order = [ {
+							column : 1,
+							dir : "desc"
+						} ];
+					}
+					try {
+						var search = null;
+						if (_param.search.value) {
+							var _search = JSON.parse(_param.search.value);
+							if (_search.type == 1) {
+								var condition = {};
+								condition[_search.se] = _search.keyword;
+								search = condition;
+							}
+							param.search = search;
+						}
+					} catch (e) {
+						console.error(e);
+					}
+
+					return param;
 				},
 			},
 			columns : [
-				{ data : 'userId' },
-				{ data : 'userName' },
-				{ data : 'birthday' },
-				{ data : 'phoneMobile' }
+				{ data : "userId" },
+				{ data : "userName" },
+				{ data : "birthday" },
+				{ data : "phoneMobile" }
 			]
 		});
 
 	});
-
-
-});
 </script>
 {% endblock content%}

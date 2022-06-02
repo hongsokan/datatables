@@ -1,16 +1,15 @@
 package com.eb.datatables.controller;
 
-import java.util.List;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eb.datatables.service.ServerService;
 import com.eb.datatables.vo.CompleteInfo;
+import com.eb.datatables.vo.DatatableDto;
+import com.eb.datatables.vo.DatatableParam;
 
 @RestController
 public class ServerRestController {
-
 	private ServerService serverService;
 
 	public ServerRestController(ServerService serverService) {
@@ -23,7 +22,7 @@ public class ServerRestController {
 	}
 
 	@GetMapping("/server/list")
-	public List<CompleteInfo> list(int start, int length) {
-		return serverService.findAll(start, length);
+	public DatatableDto<CompleteInfo> list(DatatableParam param) {
+		return serverService.findAll(param);
 	}
 }
