@@ -1,4 +1,4 @@
-package com.eb.datatables.mapper;
+package com.eb.datatables.server.mapper;
 
 import java.util.List;
 

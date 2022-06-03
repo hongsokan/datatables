@@ -1,4 +1,4 @@
-package com.eb.datatables.service;
+package com.eb.datatables.server.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.eb.datatables.mapper.ServerMapper;
+import com.eb.datatables.server.mapper.ServerMapper;
 import com.eb.datatables.vo.CompleteInfo;
 
 @Service

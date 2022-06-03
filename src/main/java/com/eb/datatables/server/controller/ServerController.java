@@ -1,4 +1,4 @@
-package com.eb.datatables.controller;
+package com.eb.datatables.server.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
