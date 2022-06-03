@@ -11,7 +11,7 @@
 		</thead>
 
 		<tbody>
-			{% for completeInfo in list %}
+			{% for completeInfo in dto.data %}
 			<tr>
 				<td>{{ completeInfo.userId }}</td>
 				<td>{{ completeInfo.userName }}</td>
@@ -29,7 +29,7 @@
 	$(function() {
 
 		$(".table").DataTable({
-			processing : true,
+			/* processing : true,
 			serverSide : true,
 			columns : [ {
 				data : "userId"
@@ -39,7 +39,7 @@
 				data : "birthday"
 			}, {
 				data : "phoneMobile"
-			} ]
+			} ] */
 		});
 
 	});

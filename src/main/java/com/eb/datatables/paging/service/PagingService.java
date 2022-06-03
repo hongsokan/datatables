@@ -1,14 +1,13 @@
 package com.eb.datatables.paging.service;
 
-import java.util.List;
-
 import com.eb.datatables.vo.CompleteInfo;
+import com.eb.datatables.vo.DatatableDto;
 
 public interface PagingService {
 
 	int count();
 
-	List<CompleteInfo> find(PaginationInfo paginationInfo);
+	DatatableDto<CompleteInfo> find(PaginationInfo paginationInfo, Integer draw);
 
 	String render(PaginationInfo info, String url, String pageNo);
 

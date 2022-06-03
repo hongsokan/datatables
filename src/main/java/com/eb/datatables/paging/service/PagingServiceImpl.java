@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.eb.datatables.paging.mapper.PagingMapper;
 import com.eb.datatables.vo.CompleteInfo;
+import com.eb.datatables.vo.DatatableDto;
 
 @Service
 public class PagingServiceImpl implements PagingService {
@@ -26,11 +27,18 @@ public class PagingServiceImpl implements PagingService {
 
 	@Transactional
 	@Override
-	public List<CompleteInfo> find(PaginationInfo paginationInfo) {
+	public DatatableDto<CompleteInfo> find(PaginationInfo paginationInfo, Integer draw) {
+
+		DatatableDto<CompleteInfo> dto = new DatatableDto<CompleteInfo>();
+
 		int from = paginationInfo.getFirstRecordIndex();
 		int to = paginationInfo.getLastRecordIndex();
 		List<CompleteInfo> list = sqlSession.getMapper(PagingMapper.class).list(from, to);
-		return list;
+
+		dto.setDraw(draw);
+		dto.setData(list);
+
+		return dto;
 	}
 
 	@Override
