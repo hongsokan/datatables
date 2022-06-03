@@ -1,8 +1,6 @@
-package com.eb.datatables.service;
+package com.eb.datatables.paging.service;
 
 import java.text.MessageFormat;
-
-import com.eb.datatables.vo.PaginationInfo;
 
 public class PaginationRenderer {
 	protected String previousPageLabel;

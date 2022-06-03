@@ -1,0 +1,47 @@
+{% extends 'base' %} {% set activeNav = 'home' %} {% block content %}
+<div>
+	<table class="table display" style="width: 100%">
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>User Name</th>
+				<th>Birthday</th>
+				<th>Phone</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for completeInfo in list %}
+			<tr>
+				<td>{{ completeInfo.userId }}</td>
+				<td>{{ completeInfo.userName }}</td>
+				<td>{{ completeInfo.birthday }}</td>
+				<td>{{ completeInfo.phoneMobile }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<div class="pagination">{{ render | raw }}</div>
+</div>
+
+<script>
+	$(function() {
+
+		$(".table").DataTable({
+			processing : true,
+			serverSide : true,
+			columns : [ {
+				data : "userId"
+			}, {
+				data : "userName"
+			}, {
+				data : "birthday"
+			}, {
+				data : "phoneMobile"
+			} ]
+		});
+
+	});
+</script>
+{% endblock content%}

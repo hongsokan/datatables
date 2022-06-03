@@ -1,4 +1,4 @@
-package com.eb.datatables.vo;
+package com.eb.datatables.paging.service;
 
 public class PaginationInfo {
 	private String url;
