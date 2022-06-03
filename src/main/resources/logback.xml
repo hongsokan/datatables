@@ -10,8 +10,8 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.eb.datatables.mapper" level="INFO"/>
-	<logger name="com.eb.datatables" level="INFO"/>
+	<!-- <logger name="com.eb.datatables.mapper" level="INFO"/> -->
+	<logger name="com.eb.datatables" level="DEBUG"/>
 
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
