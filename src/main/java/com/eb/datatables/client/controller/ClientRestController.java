@@ -1,11 +1,11 @@
-package com.eb.datatables.controller;
+package com.eb.datatables.client.controller;
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eb.datatables.service.ClientService;
+import com.eb.datatables.client.service.ClientService;
 import com.eb.datatables.vo.CompleteInfo;
 
 @RestController

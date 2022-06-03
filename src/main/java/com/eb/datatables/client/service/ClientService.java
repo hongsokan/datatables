@@ -1,4 +1,4 @@
-package com.eb.datatables.service;
+package com.eb.datatables.client.service;
 
 import java.util.List;
 
